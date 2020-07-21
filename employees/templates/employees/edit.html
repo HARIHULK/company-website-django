@@ -1,0 +1,109 @@
+{% extends 'employees/base.html' %}
+{% load static %}
+
+{% block externallink %}
+<link rel="stylesheet" href="{% static 'css/formstyle.css' %}">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="container register">
+	<div class="row">
+		<div class="col-md-3 register-left">
+			<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+			<h3>Welcome</h3>
+		</div>
+		<div class="col-md-9 register-right">
+			<div class="tab-content" id="myTabContent">
+
+
+				<h3 class="register-heading">Edit Employee details</h3>
+				<form action="{% url 'edit' obj.id %}" method="POST">
+					{% csrf_token %}
+					<div class="row register-form">
+
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="r_fname">First Name</label>
+								<input type="text" id='r_fname' class="form-control" placeholder="First Name *" name="fname" value="{{obj.Emp_Firstname}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_lname">Last Name</label>
+								<input type="text" id="r_lname" class="form-control" placeholder="Last Name *" name="lname" value="{{obj.Emp_Lastname}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_eid">Employee ID</label>
+								<input type="text" id="r_eid" class="form-control" placeholder="Employee ID *" name="eid" value="{{obj.Emp_Id}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_fpassword">Password</label>
+								<input type="password" id="r_fpassword" class="form-control" placeholder="Password *" name="fpassword" value="{{obj.Emp_Password}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_spassword">Confirm Password</label>
+								<input type="password" id="r_spassword" class="form-control" placeholder="Confirm Password *" name="spassword" value="{{obj.Emp_Password}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_gender">Gender</label>
+								<div class="maxl" id='r_gender'>
+									<label class="radio inline">
+										<input type="radio" name="gender" value="male">
+										<span> Male </span>
+									</label>
+									<label class="radio inline">
+										<input type="radio" name="gender" value="female">
+										<span>Female </span>
+									</label>
+									<label class="radio inline">
+										<input type="radio" name="gender" value="other">
+										<span>Other </span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="r_email">Email</label>
+								<input type="email" id="r_email" class="form-control" placeholder="Your Email *" name="email" value="{{obj.Emp_Email}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_age">Age</label>
+								<input type="text" id="r_age" class="form-control" placeholder="Your Age *" name="age" value="{{obj.Emp_Age}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_salary">Salary</label>
+								<input type="number" id="r_salary" class="form-control" placeholder="Your salary *" name="salary" value="{{obj.Emp_Salary}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_salary">phoneno</label>
+								<input type="text" id="r_phoneno" minlength="10" maxlength="10" class="form-control" placeholder="Your Phone *" name="phoneno" value="{{obj.Emp_phoneno}}" />
+							</div>
+							<div class="form-group">
+								<label for="r_department">Department</label>
+								<select name="department" id="r_department">
+									<option value="Technical">Technical</option>
+									<option value="Non-Technical">Non-Technical</option>
+								</select>
+							</div>
+
+							<input type="submit" class="btnRegister" value="Edit" />
+						</div>
+
+					</div>
+				</form>
+
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+{% endblock %}
